@@ -1,0 +1,41 @@
+.battle-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .battlefield {
+    position: relative;
+    width: 100%;
+    height: 80%;
+  }
+  
+  .troop {
+    position: absolute;
+    width: 50px;
+    transition: all 1s ease-in-out;
+  }
+  
+  .start-button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 18px;
+    background: #ffcc00;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .game-name {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: 'CustomFont', sans-serif;
+    font-size: 32px;
+    color: yellow;
+    background: rgba(0, 0, 0, 0.3); /* Optional: Adds a dark background */
+    padding: 5px 15px;
+  }
+    
