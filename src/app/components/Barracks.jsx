@@ -38,7 +38,7 @@ export default function Barracks({ onTrainTroops }) {
     <div className="barracks">
       {/* Barracks Button */}
       <button className="barracks-btn" onClick={() => setIsOpen(!isOpen)}>
-        <Image src="/assets/barracks.png" alt="Barracks" width={100} height={100} />
+        <Image src="/assets/barracks.png" alt="Barracks" width={150} height={150} />
       </button>
 
       {/* Barracks Menu */}

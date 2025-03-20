@@ -1,13 +1,13 @@
 /* Barracks Button */
 .barracks-btn {
     position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 400px;  /* Adjust as needed */
+    left: 600px;   /* Fix its position */
     background: none;
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    z-index: 900; /* Ensure it's above the ground */
   }
   
   .barracks-btn:hover {
