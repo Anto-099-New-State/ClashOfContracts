@@ -1,0 +1,121 @@
+/* Barracks Button */
+.barracks-btn {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .barracks-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Barracks Popup */
+  .barracks-popup {
+    position: absolute;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Troops Carousel */
+  .troops-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px 0;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* Hide scrollbar */
+  }
+  
+  .troops-carousel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+  }
+  
+  /* Troop Cards */
+  .troop-card {
+    background: #222;
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 80px;
+    scroll-snap-align: start;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .troop-card:hover {
+    transform: scale(1.1);
+  }
+  
+  .troop-card img {
+    border-radius: 5px;
+  }
+  
+  .upgrade-btn {
+    margin-top: 10px;
+    background: gold;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  /* Barracks Popup */
+.barracks-popup {
+    position: absolute;
+    bottom: 140px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    z-index: 1000; /* 🛠 Increases stacking order */
+    pointer-events: auto;
+  }
+  
+  /* Troops Carousel */
+  .troops-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px 0;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    z-index: 1001; /* ✅ Ensures it appears above Town Hall */
+  }
+  
+  .troops-carousel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar */
+  }
+  
+  /* Troop Cards */
+  .troop-card {
+    background: #222;
+    padding: 8px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 80px;
+    scroll-snap-align: start;
+    transition: transform 0.2s ease-in-out;
+    z-index: 1002; /* 🚀 Guarantees it stays above */
+  }
+  
+  .troop-card:hover {
+    transform: scale(1.1);
+  }
+  
