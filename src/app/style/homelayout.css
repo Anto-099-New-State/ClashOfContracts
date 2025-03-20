@@ -1,4 +1,3 @@
-/* Resources (Top Right) */
 .resource-container {
     position: absolute;
     top: 20px;
@@ -19,7 +18,6 @@
     font-weight: bold;
   }
   
-  /* Store Button (Bottom Right) */
   .store-button {
     position: absolute;
     bottom: 20px;
@@ -33,7 +31,6 @@
     cursor: pointer;
   }
   
-  /* Store Popup */
   .store-popup {
     position: absolute;
     bottom: 70px;
@@ -45,3 +42,34 @@
     text-align: center;
   }
   
+.townhall-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.townhall-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.townhall-btn.enlarged {
+  transform: scale(1.5);
+}
+
+.townhall-popup {
+  position: absolute;
+  top: 120px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  width: 200px;
+}
