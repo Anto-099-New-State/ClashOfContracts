@@ -58,7 +58,8 @@ export default function Barracks({ onTrainTroops }) {
             ))}
           </div>
 
-          <button className="upgrade-btn" onClick={upgradeBarracks}>Upgrade Barracks</button>
+          <button className="upgrade-btn" onClick={()=>{upgradeBarracks();
+           setIsOpen(false)}}>Upgrade Barracks</button>
         </div>
       )}
     </div>
