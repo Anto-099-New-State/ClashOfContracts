@@ -17,18 +17,9 @@ export default function BattleSetup() {
   return (
     <div className="battle-container">
       {/* Battle Field */}
-      <Image className="game-name" src="/assets/fontcoc.png" alt="Game Font" width={400} height={60} />
-      <div className="battlefield">
-        {troops.map((troop) => (
-          <img
-            key={troop.id}
-            src="/assets/troop.gif"
-            alt="Troop"
-            className="troop"
-            style={{ left: troop.x, top: troop.y }}
-          />
-        ))}
-      </div>
+      <Image className="game-name" src="/assets/fontcoc.png" alt="Game Font" width={240} height={40} />
+      
+
 
       {/* Action Buttons */}
       <button onClick={startBattle} className="start-button">

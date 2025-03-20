@@ -1,8 +1,10 @@
+"use client"
 import { useState } from "react";
 import Image from "next/image";
-
+import "../style/ai.css";
 export default function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAssistantOpen, setIsAssistantOpen] = useState(false);
 
   // AI Strategies
   const strategies = [
@@ -19,7 +21,7 @@ export default function AIAssistant() {
         className="assistant-btn"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <Image src="/assets/assistant-girl.png" alt="Assistant" width={80} height={80} />
+        <Image src="/assets/welcome-g.png" alt="Assistant" width={400} height={400} />
       </button>
 
       {/* AI Assistant Popup */}

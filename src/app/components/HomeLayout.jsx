@@ -11,16 +11,6 @@ export default function HomeLayout() {
   const [isStoreOpen, setIsStoreOpen] = useState(false);
   const closePopup = () => setIsTownhallOpen(false);
 
-  const [isAssistantOpen, setIsAssistantOpen] = useState(false);
-
-  // Strategies List
-  const strategies = [
-    "🔥 Rush Attack: Use Barbarians + Archers for fast attacks.",
-    "🛡️ Defensive Play: Upgrade walls & cannons first.",
-    "💰 Best Store Buy: Gold Mine Level 3 is cost-efficient.",
-    "⚔️ Troop Training: Train 5 Giants + 10 Archers for a balanced army."
-  ];
-
   return (
     <div className="home-layout">
       <div className="resource-container">
@@ -33,7 +23,6 @@ export default function HomeLayout() {
           <span>{elixir}</span>
         </div>
       </div>
-
       <button className="store-button" onClick={() => setIsStoreOpen(!isStoreOpen)}>
         🛒 Store
       </button>
@@ -54,7 +43,7 @@ export default function HomeLayout() {
             setIsTownhallOpen(!isTownhallOpen);
           }}
         >
-          <Image src="/assets/townhall.gif" alt="Town Hall" width={100} height={100} />
+          <Image src="/assets/townhall.gif" alt="Town Hall" width={180} height={180} />
         </button>
 
         {isTownhallOpen && (
