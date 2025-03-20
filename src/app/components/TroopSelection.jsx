@@ -15,7 +15,7 @@ export default function TroopSelection({ onDeploy }) {
   const addTroop = (troop) => {
     if (selectedTroops.length < 5) { // Limit to 5 slots
       setSelectedTroops([...selectedTroops, troop]);
-    }
+    }A
   };
 
   // Deploy troops (clear slots)
