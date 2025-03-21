@@ -7,7 +7,7 @@
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    z-index: 900; /* Ensure it's above the ground */
+    z-index: 10; /* Ensure it's above the ground */
   }
   .barracks-btn .b2{
     bottom: 300px;  /* Adjust as needed */
@@ -16,7 +16,7 @@
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    z-index: 900; /* Ensure it's above the ground */  
+    z-index: 10; /* Ensure it's above the ground */  
   }
   .barracks-btn:hover {
     transform: scale(1.1);

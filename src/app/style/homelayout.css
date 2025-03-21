@@ -65,10 +65,12 @@
 }
 
 .townhall-btn {
+  position: absolute;
   background: none;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  z-index: 10;
 }
 
 .townhall-btn.enlarged {

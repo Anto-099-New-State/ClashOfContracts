@@ -19,7 +19,10 @@ export default function Mortar({ spendGold }) {
     <div className="defense-container mortar">
 <button className="cannon-btn"  onClick={() => setShowUpgradeCard(true)}>
         <Image src="/assets/motor.gif" alt="Motor" width={80} height={80} />
-      </button>      
+      </button>   
+      <button className="cannon-btn"  onClick={() => setShowUpgradeCard(true)}>
+        <Image src="/assets/motor.gif" className="defense-container mortar2" alt="Motor" width={80} height={80} />
+      </button>    
  {/* Upgrade Card (Shows only when clicked) */}
  {showUpgradeCard && (
         <div className="small-upgrade-card" onClick={(e) => e.stopPropagation()}>

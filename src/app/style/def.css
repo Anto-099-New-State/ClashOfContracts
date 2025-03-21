@@ -7,13 +7,13 @@
   /* Positioning defenses manually */
   .cannon { top: 360px; left: 500px; }
   .cannon2 {top: 40px; left: 300px;}
-  .inferno { top: 250px; left: 400px; }
+  .inferno { top: 240px; left: 400px; }
   .inferno2 {top: 40px;left: 560px;}
   .tesla2{top:-345px;left: -15px;}
 
   .tesla { top: 420px; left: 650px; }
   .mortar { top: 300px; left: 820px; }
-  
+  .mortar2 {top: 15px;left: -500px;}
   
   .small-upgrade-card {
     position: absolute;

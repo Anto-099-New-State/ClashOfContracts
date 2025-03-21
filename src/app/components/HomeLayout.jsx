@@ -7,6 +7,7 @@ import Cannon from "./Cannon";
 import Inferno from "./Inferno";
 import Tesla from "./Tesla";
 import Mortar from "./Motor";
+import Store from "./Store";
 export default function HomeLayout() {
   const [isTownhallOpen, setIsTownhallOpen] = useState(false);
   const townhallLevel = 5;
@@ -31,6 +32,11 @@ export default function HomeLayout() {
         alert("Not enough Gold!");
       }
     };  
+    const updateResources = (newGold, newElixir) => {
+      setGold(newGold);
+      setElixir(newElixir);
+    };
+  
  
   return (
     
@@ -53,7 +59,8 @@ export default function HomeLayout() {
       </div>
 
       <button className="store-button" onClick={() => setIsStoreOpen(!isStoreOpen)}>
-        🛒 Store
+            <Store gold={gold} elixir={elixir} updateResources={updateResources} />
+
       </button>
 
       {isStoreOpen && (
