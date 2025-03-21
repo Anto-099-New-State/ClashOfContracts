@@ -21,6 +21,7 @@
     text-align: center;
     width: 80%;
     max-width: 600px;
+    z-index: 1002;
   }
   
   .store-content {
@@ -28,6 +29,8 @@
     padding: 20px;
     border-radius: 10px;
     position: relative;
+    z-index: 1002;
+
   }
   
   .close-btn {

@@ -28,6 +28,7 @@
   color: white;
   font-size: 18px;
   font-weight: bold;
+  z-index: 1000;
 }
 
 .store-button {
@@ -52,10 +53,11 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   text-align: center;
+  z-index: 1000;
 }
 
 .townhall-container {
-position: absolute;
+position: fixed;
 top: 250px;
 left: 700px;
 transform: translate(-50%, -50%);
@@ -65,12 +67,11 @@ align-items: center;
 }
 
 .townhall-btn {
-position: absolute;
+position: fixed;
 background: none;
 border: none;
 cursor: pointer;
 transition: transform 0.2s ease-in-out;
-z-index: 10;
 }
 
 .townhall-btn.enlarged {
@@ -78,7 +79,7 @@ transform: scale(1.5);
 }
 
 .townhall-popup {
-position: absolute;
+position: fixed;
 top: 120px;
 background: rgba(0, 0, 0, 0.8);
 color: white;
