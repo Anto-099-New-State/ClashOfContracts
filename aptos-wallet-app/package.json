@@ -1,0 +1,26 @@
+{
+  "name": "aptos-wallet-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@aptos-labs/wallet-adapter-ant-design": "^4.0.7",
+    "@aptos-labs/wallet-adapter-react": "^4.1.4",
+    "next": "15.2.3",
+    "petra-plugin-wallet-adapter": "^0.4.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "15.2.3",
+    "tailwindcss": "^4"
+  }
+}
