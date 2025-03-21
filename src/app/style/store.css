@@ -21,37 +21,6 @@
     text-align: center;
     width: 80%;
     max-width: 600px;
-    .store-modal {
-  position: fixed; /* Ensures it's on top */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.9);
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 600px;
-  z-index: 1000; /* Higher than other elements */
-}
-
-.store-content {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  position: relative;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 1000;
-}
-
   }
   
   .store-content {
@@ -96,5 +65,4 @@
     cursor: pointer;
     font-weight: bold;
   }
-  
   

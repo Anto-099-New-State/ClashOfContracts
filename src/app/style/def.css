@@ -5,14 +5,14 @@
   }
   
   /* Positioning defenses manually */
-  .cannon { top: 360px; left: 500px; }
+  .cannon { top: 380px; left: 500px; }
   .cannon2 {top: 40px; left: 300px;}
-  .inferno { top: 240px; left: 400px; }
+  .inferno { top: 140px; left: 380px; }
   .inferno2 {top: 40px;left: 560px;}
-  .tesla2{top:-345px;left: -15px;}
+  .tesla2{top:-355px;left: -15px;}
 
-  .tesla { top: 420px; left: 650px; }
-  .mortar { top: 300px; left: 820px; }
+  .tesla { top: 440px; left: 650px; }
+  .mortar { top: 280px; left: 900px; }
   .mortar2 {top: 15px;left: -500px;}
   
   .small-upgrade-card {

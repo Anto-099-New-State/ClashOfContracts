@@ -63,14 +63,7 @@ export default function HomeLayout() {
 
       </button>
 
-      {isStoreOpen && (
-        <div className="store-popup">
-          <h2>Store</h2>
-          <p>Coming Soon...</p>
-          <button onClick={() => setIsStoreOpen(false)}>Close</button>
-        </div>
-      )}
-
+      
        <div className="townhall-container">
         <button
           className={`townhall-btn ${isTownhallOpen ? "enlarged" : ""}`}
