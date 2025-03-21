@@ -13,9 +13,8 @@
   top: 20px;
   left: 20px;
   font-family: 'CustomFont', sans-serif;
-  font-size: 32px;
+  font-size: 34px;
   color: yellow;
-  text-shadow: 2px 2px 5px black;
   background: rgba(0, 0, 0, 0.3); /* Optional: Adds a dark background */
   padding: 5px 15px;
   border-radius: 10px;
@@ -35,10 +34,8 @@
   position: absolute;
   bottom: 20px;
   right: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 20px 20px;
   background: yellow;
-  color: black;
   border: none;
   border-radius: 10px;
   cursor: pointer;

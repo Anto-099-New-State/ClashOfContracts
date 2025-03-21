@@ -41,7 +41,7 @@ export default function HomeLayout() {
   return (
     
     <div className="home-layout">
-      <Image src="/assets/fontcoc.png" className="game-name" alt="Game Font" width={200} height={60} />
+      <Image src="/assets/fontcoc.png" className="game-name" alt="Game Font" width={240} height={50} />
       <Barracks onTrainTroops={handleTrainTroop}/>
       <Cannon spendGold={spendGold} />
       <Inferno spendGold={spendGold} />

@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import "../style/store.css";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
 
 export default function Store({ gold, elixir, updateResources }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +28,7 @@ export default function Store({ gold, elixir, updateResources }) {
     <div className="store-container">
       {/* Open Store Button */}
       <button className="store-btn" onClick={() => setIsOpen(true)}>
-        <Image src="/assets/store.png" alt="Store" width={80} height={80} />
+        <AiOutlineShoppingCart size={24} color="black"  />
       </button>
 
       {/* Store Modal */}
