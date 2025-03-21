@@ -1,0 +1,55 @@
+.defense-container {
+    position: absolute;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Positioning defenses manually */
+  .cannon { top: 360px; left: 500px; }
+  .cannon2 {top: 40px; left: 300px;}
+  .inferno { top: 250px; left: 400px; }
+  .tesla { top: 420px; left: 650px; }
+  .mortar { top: 300px; left: 820px; }
+  
+  
+  .small-upgrade-card {
+    position: absolute;
+    background: rgba(20, 20, 20, 0.9);
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    top: 90px; /* Adjusted height */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 120px; /* Smaller size */
+  }
+  
+  .upgrade-title {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .upgrade-cost {
+    font-size: 10px;
+    margin: 4px 0;
+  }
+  
+  .upgrade-btn {
+    background: #ffcc00;
+    border: none;
+    padding: 3px 6px;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 2px;
+  }
+  .cannon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  

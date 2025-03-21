@@ -8,6 +8,18 @@
     padding: 8px 15px;
     border-radius: 10px;
   }
+  .game-name {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: 'CustomFont', sans-serif;
+    font-size: 32px;
+    color: yellow;
+    text-shadow: 2px 2px 5px black;
+    background: rgba(0, 0, 0, 0.3); /* Optional: Adds a dark background */
+    padding: 5px 15px;
+    border-radius: 10px;
+  }
   
   .resource {
     display: flex;

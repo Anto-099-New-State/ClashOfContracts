@@ -4,8 +4,8 @@ import Image from "next/image";
 import "../style/barracks.css"
 
 export default function Barracks({ onTrainTroops }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [barracksLevel, setBarracksLevel] = useState(1);
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);  const [barracksLevel, setBarracksLevel] = useState(1);
   const [housingSpace, setHousingSpace] = useState(30);
   const [trainedTroops, setTrainedTroops] = useState([]);
 
@@ -17,7 +17,6 @@ export default function Barracks({ onTrainTroops }) {
     { name: "bowler", space: 20, img: "/assets/bowler.png" },
   ];
 
-  // Train Troop
   const trainTroop = (troop) => {
     const totalSpace = trainedTroops.reduce((sum, t) => sum + t.space, 0);
     if (totalSpace + troop.space <= housingSpace) {
@@ -28,7 +27,6 @@ export default function Barracks({ onTrainTroops }) {
     }
   };
 
-  // Upgrade Barracks
   const upgradeBarracks = () => {
     setBarracksLevel(barracksLevel + 1);
     setHousingSpace(housingSpace + 10);
@@ -36,13 +34,23 @@ export default function Barracks({ onTrainTroops }) {
 
   return (
     <div className="barracks">
-      {/* Barracks Button */}
-      <button className="barracks-btn" onClick={() => setIsOpen(!isOpen)}>
-        <Image src="/assets/barracks.png" alt="Barracks" width={150} height={150} />
-      </button>
+            {/* First Barracks */}
+            <div className="barracks">
+        <button className="barracks-btn" onClick={() => setIsOpen1(!isOpen1)}>
+          <Image src="/assets/barracks.png" alt="Barracks 1" width={150} height={150} />
+        </button>
+        {isOpen1 && <p className="barracks-popup">🏰 Barracks 1 Open</p>}
+      </div>
 
-      {/* Barracks Menu */}
-      {isOpen && (
+      {/* Second Barracks */}
+      <div className="barracks">
+        <button className="barracks-btn" onClick={() => setIsOpen2(!isOpen2)}>
+          <Image src="/assets/barracks.png" alt="Barracks 2" width={150} height={150} />
+        </button>
+        {isOpen2 && <p className="barracks-popup">🏰 Barracks 2 Open</p>}
+      </div>
+
+      {isOpen1 && (
         <div className="barracks-popup" onClick={(e) => e.stopPropagation()}>
           <h3>🏰 Barracks (Level {barracksLevel})</h3>
           <p>Housing Space: {housingSpace - trainedTroops.reduce((sum, t) => sum + t.space, 0)} / {housingSpace}</p>
@@ -59,7 +67,27 @@ export default function Barracks({ onTrainTroops }) {
           </div>
 
           <button className="upgrade-btn" onClick={()=>{upgradeBarracks();
-           setIsOpen(false)}}>Upgrade Barracks</button>
+           setIsOpen1(false)}}>Upgrade Barracks</button>
+        </div>
+      )}
+         {isOpen2 && (
+        <div className="barracks-popup" onClick={(e) => e.stopPropagation()}>
+          <h3>🏰 Barracks (Level {barracksLevel})</h3>
+          <p>Housing Space: {housingSpace - trainedTroops.reduce((sum, t) => sum + t.space, 0)} / {housingSpace}</p>
+
+          {/* Troop Carousel (Flex Row) */}
+          <div className="troops-carousel">
+            {troops.map((troop, index) => (
+              <div key={index} className="troop-card">
+                <Image src={troop.img} alt={troop.name} width={60} height={60} />
+                <p>{troop.name}</p>
+                <button onClick={() => trainTroop(troop)}>Train</button>
+              </div>
+            ))}
+          </div>
+
+          <button className="upgrade-btn" onClick={()=>{upgradeBarracks();
+           setIsOpen2(false)}}>Upgrade Barracks</button>
         </div>
       )}
     </div>

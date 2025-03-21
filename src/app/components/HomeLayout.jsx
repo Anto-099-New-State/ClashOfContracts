@@ -2,6 +2,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import "../style/homelayout.css"
+import Barracks from "./Barracks";
+import Cannon from "./Cannon";
+import Inferno from "./Inferno";
+import Tesla from "./Tesla";
+import Mortar from "./Motor";
 export default function HomeLayout() {
   const [isTownhallOpen, setIsTownhallOpen] = useState(false);
   const townhallLevel = 5;
@@ -10,9 +15,32 @@ export default function HomeLayout() {
 
   const [isStoreOpen, setIsStoreOpen] = useState(false);
   const closePopup = () => setIsTownhallOpen(false);
-
+   const [trainedTroops, setTrainedTroops] = useState([]);
+  
+    // Function to handle trained troops
+    const handleTrainTroop = (troop) => {
+      console.log("Troop trained:", troop);
+      setTrainedTroops([...trainedTroops, troop]);
+    };
+   
+    const spendGold = (cost, upgradeFn) => {
+      if (gold >= cost) {
+        setGold(gold - cost);
+        upgradeFn();
+      } else {
+        alert("Not enough Gold!");
+      }
+    };  
+ 
   return (
+    
     <div className="home-layout">
+      <Image src="/assets/fontcoc.png" className="game-name" alt="Game Font" width={200} height={60} />
+      <Barracks onTrainTroops={handleTrainTroop}/>
+      <Cannon spendGold={spendGold} />
+      <Inferno spendGold={spendGold} />
+      <Tesla spendGold={spendGold} />
+      <Mortar spendGold={spendGold} />
       <div className="resource-container">
         <div className="resource">
           <Image src="/assets/gold.png" alt="Gold" width={30} height={30} />
@@ -23,6 +51,7 @@ export default function HomeLayout() {
           <span>{elixir}</span>
         </div>
       </div>
+
       <button className="store-button" onClick={() => setIsStoreOpen(!isStoreOpen)}>
         🛒 Store
       </button>

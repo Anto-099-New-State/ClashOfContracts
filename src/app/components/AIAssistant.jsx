@@ -6,7 +6,6 @@ export default function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [isAssistantOpen, setIsAssistantOpen] = useState(false);
 
-  // AI Strategies
   const strategies = [
     "🔥 Rush Attack: Use Barbarians + Archers for fast attacks.",
     "🛡️ Defensive Play: Upgrade walls & cannons first.",
@@ -16,7 +15,6 @@ export default function AIAssistant() {
 
   return (
     <div className="ai-assistant">
-      {/* AI Assistant Button */}
       <button
         className="assistant-btn"
         onClick={() => setIsOpen(!isOpen)}
@@ -24,7 +22,6 @@ export default function AIAssistant() {
         <Image src="/assets/welcome-g.png" alt="Assistant" width={400} height={400} />
       </button>
 
-      {/* AI Assistant Popup */}
       {isOpen && (
         <div className="assistant-popup" onClick={() => setIsOpen(false)}>
           <h3>📝 AI Battle Assistant</h3>
