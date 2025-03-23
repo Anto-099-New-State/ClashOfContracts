@@ -20,6 +20,8 @@ export default function Inferno({ spendGold }) {
 <button className="cannon-btn"  onClick={() => setShowUpgradeCard(true)}>
         <Image src="/assets/inferno.gif" alt="Inferno" width={80} height={80} />
       </button>  
+      <Image src="/assets/inferno.gif" className="defense-container inferno2" alt="Inferno" width={80} height={80} />
+
       <button className="cannon-btn"  onClick={() => setShowUpgradeCard(true)}>
         <Image src="/assets/inferno.gif" className="defense-container inferno2" alt="Inferno" width={80} height={80} />
       </button>     

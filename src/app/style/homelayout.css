@@ -50,14 +50,12 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   text-align: center;
-  z-index: 1000;
 }
 
 .townhall-container {
 position: fixed;
 top: 250px;
 left: 700px;
-transform: translate(-50%, -50%);
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -68,12 +66,9 @@ position: fixed;
 background: none;
 border: none;
 cursor: pointer;
-transition: transform 0.2s ease-in-out;
 }
 
-.townhall-btn.enlarged {
-transform: scale(1.5);
-}
+
 
 .townhall-popup {
 position: fixed;

@@ -72,7 +72,7 @@ export default function HomeLayout() {
             setIsTownhallOpen(!isTownhallOpen);
           }}
         >
-          <Image src="/assets/townhall.gif" alt="Town Hall" width={180} height={180} />
+          <Image src="/assets/townhall.png" alt="Town Hall" width={120} height={120} />
         </button>
 
         {isTownhallOpen && (
