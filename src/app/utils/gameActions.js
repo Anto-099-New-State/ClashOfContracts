@@ -16,11 +16,12 @@ export async function trainTroops(troopType, troopCount) {
         console.log("📌 Checking payload:", payload);
         console.log("📌 Checking aptos.transaction:", aptos.transaction);
 
-        if (!aptos.transaction || !aptos.transaction.build) {
-            throw new Error("Aptos transaction API is not initialized!");
+        if (!aptos.transaction || !aptos.transaction.buildEntryFunctionTransaction) {
+            throw new Error("Aptos transaction API is not initialized correctly!");
         }
 
-        const transaction = await aptos.transaction.build.simple({
+        // ✅ Use the correct transaction builder
+        const transaction = await aptos.transaction.buildEntryFunctionTransaction({
             sender: senderAddress,
             data: payload,
         });
