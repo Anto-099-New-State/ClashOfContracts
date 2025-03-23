@@ -1,8 +1,8 @@
 /* Barracks Button */
 .barracks-btn {
     position: absolute;
-    bottom: 400px;  /* Adjust as needed */
-    left: 600px;   /* Fix its position */
+    bottom: 420px;  /* Adjust as needed */
+    left: 630px;   /* Fix its position */
     background: none;
     border: none;
     cursor: pointer;

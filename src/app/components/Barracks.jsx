@@ -55,7 +55,7 @@ export default function Barracks({ onTrainTroops }) {
             {/* First Barracks */}
             <div className="barracks">
         <button className="barracks-btn" onClick={() => setIsOpen1(!isOpen1)}>
-          <Image src="/assets/barracks.png" alt="Barracks 1" width={150} height={150} />
+          <Image src="/assets/barracks.png" alt="Barracks 1" width={120} height={120} />
         </button>
         {isOpen1 && <p className="barracks-popup">🏰 Barracks 1 Open</p>}
       </div>

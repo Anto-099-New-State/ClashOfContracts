@@ -19,8 +19,17 @@ export default function Inferno({ spendGold }) {
     <div className="defense-container inferno">
 <button className="cannon-btn"  onClick={() => setShowUpgradeCard(true)}>
         <Image src="/assets/inferno.gif" alt="Inferno" width={80} height={80} />
-      </button>  
-      <Image src="/assets/inferno.gif" className="defense-container inferno2" alt="Inferno" width={80} height={80} />
+      </button> 
+      <div className="defense-container storage-div">
+      <Image src="/assets/goldstorage.png" alt="Inferno" width={60} height={60} />
+      <Image src="/assets/goldstorage.png"  alt="Inferno" width={60} height={60} />
+      </div> 
+
+      <div className="defense-container storage-div2">
+      <Image src="/assets/goldstorage.png" alt="Inferno" width={60} height={60} />
+      <Image src="/assets/goldstorage.png"  alt="Inferno" width={60} height={60} />
+      </div>
+     
 
       <button className="cannon-btn"  onClick={() => setShowUpgradeCard(true)}>
         <Image src="/assets/inferno.gif" className="defense-container inferno2" alt="Inferno" width={80} height={80} />
