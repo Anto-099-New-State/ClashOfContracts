@@ -1,7 +1,9 @@
+import { createAgent } from "../api/game-agent/route";
+
 export async function trainTroops(troopType, troopCount) {
     try {
         // Validate inputs
-        if (!troopType || !troopCount) {
+        if (troopType === undefined || troopCount === undefined) {
             throw new Error("❌ troopType and troopCount are required!");
         }
         
@@ -12,59 +14,43 @@ export async function trainTroops(troopType, troopCount) {
         
         console.log("📌 Using sender address:", address);
         
-        // Debug available methods on aptos object
-        console.log("📌 Available methods on aptos:", Object.keys(aptos));
-        
-        // Create the payload
+        // Create the payload with correct types
+        // The Move function expects u8 for troopType and u64 for quantity
         const payload = {
             function: `${address}::game_agent::train_troops`,
             type_arguments: [],
-            arguments: [troopType, parseInt(troopCount)]
+            arguments: [
+                Number(troopType),     // Make sure it's a number for u8
+                BigInt(troopCount)     // Use BigInt for u64 to avoid precision issues
+            ]
         };
         
-        console.log("📌 Checking payload:", payload);
+        console.log("📌 Prepared payload:", payload);
         
+        // Using the latest Aptos SDK v2.x pattern
         try {
-            // Build the transaction using transaction.build
             const transaction = await aptos.transaction.build({
                 sender: address,
-                payload: payload
+                data: payload
             });
             
-            console.log("📌 Transaction built successfully");
+            const signedTx = await signer.sign(transaction);
+            const pendingTx = await aptos.transaction.submit(signedTx);
             
-            // Sign the transaction
-            // Note: This assumes your signer has a signTransaction method
-            // If not, you may need to adjust based on your signer's API
-            const signedTx = await signer.signTransaction(transaction);
+            console.log("✅ Transaction submitted:", pendingTx);
+            const txResult = await aptos.transaction.waitForTransaction({
+                transactionHash: pendingTx.hash
+            });
             
-            console.log("📌 Transaction signed successfully");
-            
-            // Submit the signed transaction
-            const response = await aptos.transaction.submit(signedTx);
-            
-            console.log("✅ Transaction submitted:", response);
-            return { hash: response.hash || response.txHash, success: true };
-            
+            console.log("✅ Transaction confirmed:", txResult);
+            return { 
+                hash: pendingTx.hash, 
+                success: true,
+                result: txResult
+            };
         } catch (txError) {
-            console.error("❌ Transaction submission error:", txError);
-            
-            // Try alternative method if first approach fails
-            if (typeof aptos.transaction.submit === 'function') {
-                console.log("📌 Trying direct submission with transaction.submit");
-                
-                // Some Aptos SDKs allow passing payload directly to submit
-                const altResponse = await aptos.transaction.submit({
-                    sender: address,
-                    payload: payload,
-                    signer: signer
-                });
-                
-                console.log("✅ Transaction submitted (alt method):", altResponse);
-                return { hash: altResponse.hash || altResponse.txHash, success: true };
-            }
-            
-            throw txError;
+            console.error("❌ Transaction failed:", txError);
+            throw new Error(`Transaction error: ${txError.message}`);
         }
     } catch (error) {
         console.error("❌ Train Troops Error:", error);
