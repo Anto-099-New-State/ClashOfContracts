@@ -4,17 +4,18 @@ import { Aptos, AptosConfig, Network, Account } from "@aptos-labs/ts-sdk";
 const aptosConfig = new AptosConfig({ network: Network.DEVNET });
 const aptos = new Aptos(aptosConfig);
 
-// ✅ Private Key Fix: Convert to Uint8Array
-const PRIVATE_KEY = "0x66efe7c174f8d2fcc91a1e483e5ca18cd503e39fd74e0d53d4c08689f1c2e32c";
-const senderAccount = Account.fromPrivateKey({
-    privateKey: Uint8Array.from(Buffer.from(PRIVATE_KEY.replace(/^0x/, ""), "hex"))
-});
+// ✅ Hardcoded sender address (replace with your actual address)
+const senderAddress = "0x6077c1100fc0e5adf8e812dc576040f0af8cb1158a7a1a0626adb9c831f46a8b";
+
+// ❌ Private key removed
+// const PRIVATE_KEY = "REDACTED";
+// const senderAccount = Account.fromPrivateKey({
+//     privateKey: Uint8Array.from(Buffer.from(PRIVATE_KEY.replace(/^0x/, ""), "hex"))
+// });
 
 export async function trainTroops(troopType, troopCount) {
     try {
         console.log(`📌 Training troops: ${troopType} ${troopCount}`);
-
-        const senderAddress = senderAccount.address();
         console.log("📌 Using sender address:", senderAddress);
 
         const payload = {
@@ -33,9 +34,9 @@ export async function trainTroops(troopType, troopCount) {
 
         console.log("📌 Transaction built:", transaction);
 
-        // ✅ Sign the transaction
+        // ✅ Sign the transaction (Requires signer)
         const signedTransaction = await aptos.transaction.sign({
-            signer: senderAccount,
+            signer: senderAccount, // ❌ This will fail unless `senderAccount` is defined
             transaction,
         });
 
