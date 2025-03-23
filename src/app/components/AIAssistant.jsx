@@ -39,7 +39,7 @@ export default function AIAssistant() {
   return (
     <div className="ai-assistant">
       <button className="assistant-btn" onClick={() => setIsOpen(!isOpen)}>
-        <Image src="/assets/welcome-g.png" alt="Assistant" width={400} height={400} />
+        <Image src="/assets/welcome-g.png" alt="Assistant" width={350} height={350} />
       </button>
 
       {isOpen && (
