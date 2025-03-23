@@ -61,7 +61,7 @@ export default function HomeLayout() {
       <button className="store-button" onClick={() => setIsStoreOpen(!isStoreOpen)}>
             <Store gold={gold} elixir={elixir} updateResources={updateResources} />
 
-      </button>
+      </button> 
 
       
        <div className="townhall-container">
