@@ -18,10 +18,10 @@ export default function Cannon({ spendGold }) {
     <div className="defense-container cannon">
       {/* Clickable Cannon Image */}
       <button className="cannon-btn"  onClick={() => setShowUpgradeCard(true)}>
-        <Image src="/assets/cannon.gif" alt="Cannon" width={80} height={80} />
+        <Image src="/assets/cannon.png" alt="Cannon" width={80} height={80} />
       </button>
       <button  className="cannon-btn"  onClick={() => setShowUpgradeCard(true)}>
-        <Image src="/assets/cannon.gif" className="defense-container cannon2" alt="Cannon" width={80} height={80} />
+        <Image src="/assets/cannon.png" className="defense-container cannon2" alt="Cannon" width={80} height={80} />
       </button>
 
       {/* Small Upgrade Card */}

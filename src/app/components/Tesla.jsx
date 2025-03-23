@@ -18,10 +18,10 @@ export default function Tesla({ spendGold }) {
   return (
     <div className="defense-container tesla">
 <button className="cannon-btn"  onClick={() => setShowUpgradeCard(true)}>
-        <Image src="/assets/tesla.gif" alt="Tesla" width={80} height={80} />
+        <Image src="/assets/tesla.png" alt="Tesla" width={80} height={80} />
       </button>  
       <button className="cannon-btn"  onClick={() => setShowUpgradeCard(true)}>
-        <Image src="/assets/tesla.gif" className="defense-container tesla2" alt="Tesla" width={80} height={80} />
+        <Image src="/assets/tesla.png" className="defense-container tesla2" alt="Tesla" width={80} height={80} />
       </button>     
  {/* Upgrade Card (Shows only when clicked) */}
  {showUpgradeCard && (
