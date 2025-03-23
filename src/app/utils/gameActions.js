@@ -1,54 +1,73 @@
-import { Aptos, AptosConfig, Network, Account } from "@aptos-labs/ts-sdk";
-
-// ✅ Initialize Aptos SDK with Devnet
-const aptosConfig = new AptosConfig({ network: Network.DEVNET });
-const aptos = new Aptos(aptosConfig);
-
-// ✅ Hardcoded sender address (replace with your actual address)
-const senderAddress = "0x6077c1100fc0e5adf8e812dc576040f0af8cb1158a7a1a0626adb9c831f46a8b";
-
-// ❌ Private key removed
-// const PRIVATE_KEY = "REDACTED";
-// const senderAccount = Account.fromPrivateKey({
-//     privateKey: Uint8Array.from(Buffer.from(PRIVATE_KEY.replace(/^0x/, ""), "hex"))
-// });
-
 export async function trainTroops(troopType, troopCount) {
     try {
+        // Validate inputs
+        if (!troopType || !troopCount) {
+            throw new Error("❌ troopType and troopCount are required!");
+        }
+        
         console.log(`📌 Training troops: ${troopType} ${troopCount}`);
-        console.log("📌 Using sender address:", senderAddress);
-
+        
+        // Get agent with signer and hardcoded address
+        const { signer, aptos, address } = await createAgent();
+        
+        console.log("📌 Using sender address:", address);
+        
+        // Debug available methods on aptos object
+        console.log("📌 Available methods on aptos:", Object.keys(aptos));
+        
+        // Create the payload
         const payload = {
-            function: "0x6077c1100fc0e5adf8e812dc576040f0af8cb1158a7a1a0626adb9c831f46a8b::game_agent::train_troops",
+            function: `${address}::game_agent::train_troops`,
             type_arguments: [],
-            arguments: [troopType, troopCount],
+            arguments: [troopType, parseInt(troopCount)]
         };
-
+        
         console.log("📌 Checking payload:", payload);
-
-        // ✅ Build the transaction
-        const transaction = await aptos.transaction.build.simple({
-            sender: senderAddress,
-            data: payload,
-        });
-
-        console.log("📌 Transaction built:", transaction);
-
-        // ✅ Sign the transaction (Requires signer)
-        const signedTransaction = await aptos.transaction.sign({
-            signer: senderAccount, // ❌ This will fail unless `senderAccount` is defined
-            transaction,
-        });
-
-        console.log("📌 Signed transaction:", signedTransaction);
-
-        // ✅ Submit the signed transaction
-        const response = await aptos.transaction.submit(signedTransaction);
-        console.log("✅ Transaction submitted:", response);
-
-        return response;
+        
+        try {
+            // Build the transaction using transaction.build
+            const transaction = await aptos.transaction.build({
+                sender: address,
+                payload: payload
+            });
+            
+            console.log("📌 Transaction built successfully");
+            
+            // Sign the transaction
+            // Note: This assumes your signer has a signTransaction method
+            // If not, you may need to adjust based on your signer's API
+            const signedTx = await signer.signTransaction(transaction);
+            
+            console.log("📌 Transaction signed successfully");
+            
+            // Submit the signed transaction
+            const response = await aptos.transaction.submit(signedTx);
+            
+            console.log("✅ Transaction submitted:", response);
+            return { hash: response.hash || response.txHash, success: true };
+            
+        } catch (txError) {
+            console.error("❌ Transaction submission error:", txError);
+            
+            // Try alternative method if first approach fails
+            if (typeof aptos.transaction.submit === 'function') {
+                console.log("📌 Trying direct submission with transaction.submit");
+                
+                // Some Aptos SDKs allow passing payload directly to submit
+                const altResponse = await aptos.transaction.submit({
+                    sender: address,
+                    payload: payload,
+                    signer: signer
+                });
+                
+                console.log("✅ Transaction submitted (alt method):", altResponse);
+                return { hash: altResponse.hash || altResponse.txHash, success: true };
+            }
+            
+            throw txError;
+        }
     } catch (error) {
         console.error("❌ Train Troops Error:", error);
-        throw new Error("Failed to train troops.");
+        throw new Error(`Failed to train troops: ${error.message}`);
     }
 }
