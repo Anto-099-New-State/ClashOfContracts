@@ -1,6 +1,7 @@
 import HomeLayout from "./components/HomeLayout";
 import AIAssistant from "./components/AIAssistant";
 import WalletButton from "./components/WalletButton";
+import BattleGame from "./components/BattleGame";
 
 export default function Home() {
  
@@ -9,6 +10,7 @@ export default function Home() {
        <AIAssistant />
        <WalletButton />
        <HomeLayout />
+       <BattleGame/>
     </div>
   );
 }

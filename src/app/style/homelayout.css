@@ -1,3 +1,22 @@
+.start-battle-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  width: 200px;
+  text-align: center;
+  margin: 20px auto;
+}
+
+.start-battle-btn:hover {
+  background-color: #e64a19;
+}
 .resource-container {
   position: absolute;
   top: 20px;
