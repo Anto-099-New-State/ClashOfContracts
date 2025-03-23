@@ -4,9 +4,11 @@ import { Aptos, AptosConfig, Network, Account } from "@aptos-labs/ts-sdk";
 const aptosConfig = new AptosConfig({ network: Network.DEVNET });
 const aptos = new Aptos(aptosConfig);
 
-// ✅ Replace with your wallet's private key (DO NOT USE IN PRODUCTION)
-const PRIVATE_KEY = "your-private-key-here";
-const senderAccount = Account.fromPrivateKey({ privateKey: PRIVATE_KEY });
+// ✅ Private Key Fix: Convert to Uint8Array
+const PRIVATE_KEY = "0x66efe7c174f8d2fcc91a1e483e5ca18cd503e39fd74e0d53d4c08689f1c2e32c";
+const senderAccount = Account.fromPrivateKey({
+    privateKey: Uint8Array.from(Buffer.from(PRIVATE_KEY.replace(/^0x/, ""), "hex"))
+});
 
 export async function trainTroops(troopType, troopCount) {
     try {
@@ -23,7 +25,7 @@ export async function trainTroops(troopType, troopCount) {
 
         console.log("📌 Checking payload:", payload);
 
-        // ✅ Build the transaction with Aptos SDK
+        // ✅ Build the transaction
         const transaction = await aptos.transaction.build.simple({
             sender: senderAddress,
             data: payload,
@@ -32,7 +34,10 @@ export async function trainTroops(troopType, troopCount) {
         console.log("📌 Transaction built:", transaction);
 
         // ✅ Sign the transaction
-        const signedTransaction = await aptos.transaction.sign({ signer: senderAccount, transaction });
+        const signedTransaction = await aptos.transaction.sign({
+            signer: senderAccount,
+            transaction,
+        });
 
         console.log("📌 Signed transaction:", signedTransaction);
 
