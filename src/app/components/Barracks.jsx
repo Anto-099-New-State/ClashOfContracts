@@ -17,15 +17,33 @@ export default function Barracks({ onTrainTroops }) {
     { name: "bowler", space: 20, img: "/assets/bowler.png" },
   ];
 
-  const trainTroop = (troop) => {
+  const trainTroop = async (troop) => {
     const totalSpace = trainedTroops.reduce((sum, t) => sum + t.space, 0);
     if (totalSpace + troop.space <= housingSpace) {
       setTrainedTroops([...trainedTroops, troop]);
-      onTrainTroops(troop);
+  
+      try {
+        const response = await fetch("/api/train", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            action: "train",
+            data: { troopType: troop.name, quantity: 1 },
+          }),
+        });
+  
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error);
+  
+        console.log("✅ Training successful:", result.message);
+      } catch (error) {
+        console.error("❌ Failed to train troop:", error);
+      }
     } else {
       alert("Not enough housing space!");
     }
   };
+  
 
   const upgradeBarracks = () => {
     setBarracksLevel(barracksLevel + 1);
