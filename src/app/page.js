@@ -10,7 +10,6 @@ export default function Home() {
        <AIAssistant />
        <WalletButton />
        <HomeLayout />
-       <BattleGame/>
     </div>
   );
 }

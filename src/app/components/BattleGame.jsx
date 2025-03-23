@@ -3,23 +3,28 @@ import React, { useState, useEffect } from "react";
 import "../style/battle.css"; // Ensure this file exists
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from 'next/navigation';
 
 const initialTroops = [
-  { id: 1, name: "Soldier", hp: 100, attack: 20, img: "/assets/bowler.png" },
-  { id: 2, name: "Archer", hp: 80, attack: 25, img: "/assets/archer.png" },
-  { id: 2, name: "Wizard", hp: 80, attack: 25, img: "/assets/wizard.png" },
-  { id: 2, name: "Barbarian", hp: 80, attack: 25, img: "/assets/barb.png" },
+  { id: 1, name: "Soldier", hp: 100, attack: 20, img: "/assets/bowlerrunning.gif" },
+  { id: 2, name: "Archer", hp: 80, attack: 25, img: "/assets/archerrunning.gif" },
+  { id: 2, name: "Wizard", hp: 80, attack: 25, img: "/assets/wizardrunning.gif" },
+  { id: 2, name: "Barbarian", hp: 80, attack: 25, img: "/assets/barbrunning.gif" },
 ];
 
 const initialDefenses = [
   { id: 1, name: "Cannon", hp: 150, attack: 15, img: "/assets/cannon.png" },
   { id: 2, name: "Tower", hp: 200, attack: 10, img: "/assets/tesla.png" },
+  { id: 2, name: "Motor", hp: 200, attack: 10, img: "/assets/motor.gif" },
   { id: 2, name: "Inferno", hp: 200, attack: 10, img: "/assets/inferno.gif" }
+
 ];
 
 const townhallImg = "/assets/townhall.png";
 
 const BattleGame = () => {
+    const router = useRouter();
+
   const [troopSlots, setTroopSlots] = useState([]); // Deployed troops
   const [deployed, setDeployed] = useState(false); // Battle status
   const [troops, setTroops] = useState(initialTroops);
@@ -73,7 +78,7 @@ const BattleGame = () => {
     if (townHall.hp <= 0) {
       toast.success("🔥 Strike You! 😊", { position: "top-center" });
       setDeployed(false);
-    } else if (troopSlots.length === 0 && defenses.length > 0) {
+    } else if (troopSlots.length < 1 && defenses.length > 0) {
       toast.error("💀 You Lost! 😢", { position: "top-center" });
       setDeployed(false);
     }
@@ -81,6 +86,10 @@ const BattleGame = () => {
 
   return (
     <div className="battle-container">
+     <div className="nav-btn">
+      <button onClick={() => window.location.reload()}>🔄️</button>
+      <button onClick={() => router.push("/")}>🏠</button>
+    </div>
       <h2>Battle Game</h2>
 
       <ToastContainer /> {/* Required for notifications */}

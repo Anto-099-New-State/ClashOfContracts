@@ -3,12 +3,16 @@ import { useState } from "react";
 import Image from "next/image";
 import "../style/homelayout.css"
 import Barracks from "./Barracks";
+import { useRouter } from "next/navigation";
+
 import Cannon from "./Cannon";
 import Inferno from "./Inferno";
 import Tesla from "./Tesla";
 import Mortar from "./Motor";
 import Store from "./Store";
 export default function HomeLayout() {
+  const router = useRouter();
+
   const [isTownhallOpen, setIsTownhallOpen] = useState(false);
   const townhallLevel = 5;
   const [gold, setGold] = useState(1000);
@@ -60,8 +64,15 @@ export default function HomeLayout() {
 
       <button className="store-button" onClick={() => setIsStoreOpen(!isStoreOpen)}>
             <Store gold={gold} elixir={elixir} updateResources={updateResources} />
-
+              
       </button> 
+          <button
+          className="war-button"
+        onClick={() => router.push("/game")}
+            >
+        Battle 🎮
+      </button>
+      
 
       
        <div className="townhall-container">
@@ -88,6 +99,7 @@ export default function HomeLayout() {
           </div>
         )}
         </div>
+
     </div>
   );
 }
