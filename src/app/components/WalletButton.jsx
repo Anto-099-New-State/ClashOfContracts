@@ -1,5 +1,5 @@
 "use client";
-import { useWalletContext } from "@/context/WalletContext";
+import { useWalletContext } from "../../context/WalletContext";
 import "../style/wallet.css";
 
 export default function WalletButton() {

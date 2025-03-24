@@ -8,27 +8,35 @@ export default function AIAssistant() {
   const [chat, setChat] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Available game actions
+  // Available game actions with AI-compatible messages
   const gameActions = {
-    "Train Troops": "🛡️ Train troops by selecting unit types.",
-    "Buy Potions": "💊 Buy potions to heal your army.",
-    "Upgrade Defenses": "🏰 Upgrade your walls & towers.",
+    "Train Troops": "Train me 10 barb, 5 archer",
+    "Buy Potions": "Buy 3 health potions",
+    "Upgrade Defenses": "Upgrade my castle walls",
   };
 
-  // Send request to AI Agent API
-  const handleUserAction = async (action) => {
+  // Send request to AI Assistant API
+  const handleUserAction = async (actionKey) => {
     setLoading(true);
-    setChat((prevChat) => [...prevChat, `👤 You: ${action}`]);
+    const userMessage = gameActions[actionKey]; // Get predefined AI command
+
+    setChat((prevChat) => [...prevChat, `👤 You: ${userMessage}`]);
 
     try {
+      // ✅ Use the correct API route `/api/game-agent`
       const response = await fetch("/api/game-agent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action }),
+        body: JSON.stringify({ userMessage }), // ✅ Send user message correctly
       });
 
       const data = await response.json();
-      setChat((prevChat) => [...prevChat, `🤖 AI: ${data.message}`]);
+
+      if (data.error) {
+        setChat((prevChat) => [...prevChat, `⚠️ AI Error: ${data.error}`]);
+      } else {
+        setChat((prevChat) => [...prevChat, `🤖 AI: ${data.message}`]);
+      }
     } catch (error) {
       setChat((prevChat) => [...prevChat, "⚠️ AI: Error processing request."]);
     }
@@ -48,7 +56,7 @@ export default function AIAssistant() {
           <ul>
             {Object.keys(gameActions).map((action, index) => (
               <li key={index} onClick={() => handleUserAction(action)}>
-                {gameActions[action]}
+                {action}
               </li>
             ))}
           </ul>
