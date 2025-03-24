@@ -6,7 +6,7 @@ const llm = new ChatGoogleGenerativeAI({
   model: "gemini-1.5-pro-latest",
   apiKey: process.env.GEMINI_API_KEY,
 });
-
+const NEXT_PUBLIC_BACKEND_URL="https://clash-cntrx-backend.vercel.app/";
 export async function POST(request) {
   try {
     const body = await request.json();
@@ -50,14 +50,14 @@ export async function POST(request) {
       Array.isArray(responseData.troopAmounts) &&
       responseData.troopTypes.length === responseData.troopAmounts.length
     ) {
-      console.log("🚀 Sending request to backend:", process.env.NEXT_PUBLIC_BACKEND_URL);
+      console.log("🚀 Sending request to backend:", NEXT_PUBLIC_BACKEND_URL);
       console.log("🛠️ Request payload:", JSON.stringify({
         troopTypes: responseData.troopTypes,
         troopAmounts: responseData.troopAmounts,
         user: process.env.APTOS_ADDRESS
       }));
 
-      const backendResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/train-troops`, {
+      const backendResponse = await fetch(`${NEXT_PUBLIC_BACKEND_URL}/api/train-troops`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
